@@ -48,7 +48,7 @@ function prompt2() {
                     message: 'Enter your hexadecimal number starting with # :',
                     name: 'textColor'
                 }
-            ]).then((res) => {userInputs.textColor = res.textColor.toUpperCase(); prompt3()})
+            ]).then((res) => { userInputs.textColor = res.textColor.toUpperCase(); prompt3() })
         } else {
             userInputs.textColor = res.textColor;
             prompt3();
@@ -64,7 +64,7 @@ function prompt3() {
             name: 'shape',
             choices: [...shapeOptions]
         }
-    ]).then((res) => {userInputs.shape = res.shape; prompt4()})
+    ]).then((res) => { userInputs.shape = res.shape; prompt4() })
 }
 // function for shape color selection
 function prompt4() {
@@ -84,7 +84,7 @@ function prompt4() {
                     message: 'Enter your hexadecimal number starting with # :',
                     name: 'shapeColor'
                 }
-            ]).then((res) => {userInputs.shapeColor = res.shapeColor.toUpperCase(); generator()})
+            ]).then((res) => { userInputs.shapeColor = res.shapeColor.toUpperCase(); generator() })
         } else {
             userInputs.shapeColor = res.shapeColor;
             // once all prompts done calling function to generate logo.svg
@@ -95,7 +95,7 @@ function prompt4() {
 // taking userdata to create logo.svg
 function generator() {
     let template;
-    switch(userInputs.shape) {
+    switch (userInputs.shape) {
         case 'Circle':
             template = new shapes.Circle(userInputs.text, userInputs.textColor, userInputs.shapeColor, userInputs.shape)
             break;
@@ -106,7 +106,9 @@ function generator() {
             template = new shapes.Triangle(userInputs.text, userInputs.textColor, userInputs.shapeColor, userInputs.shape)
             break;
     }
-    console.log(template)
+    fs.writeFile('logo.svg', template.svg, (err) =>
+        err ? console.error(err) : console.log('Generated logo.svg')
+    );
 }
 
 init();
