@@ -1,6 +1,20 @@
 {
+  "name": "logo-generator",
+  "version": "1.0.0",
+  "description": "A CLI used to generate basic logos, based off user criteria.",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "inquirer": "^8.2.4",
+    "inquirer": "^8.2.4"
+  },
+  "devDependencies": {
     "jest": "^29.7.0"
   }
 }
